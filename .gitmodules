@@ -1,0 +1,6 @@
+[submodule "CppLinuxSerial"]
+	path = modules/CppLinuxSerial
+	url = https://github.com/gbmhunter/CppLinuxSerial.git
+[submodule "modules/args"]
+	path = modules/args
+	url = https://github.com/Taywee/args.git
