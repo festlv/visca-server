@@ -122,6 +122,18 @@ int main(int argc, char** argv) {
     //reconfigure to VISCA baud rate
     serialPort.SetBaudRate(BaudRate::B_9600);
     usleep(100 * 1000);
+
+    std::vector<uint8_t> visca_manual_focus({0x81, 0x01, 0x04, 0x38, 0x03, 0xFF});
+    std::vector<uint8_t> visca_zoom_pos({0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF});
+    std::vector<uint8_t> visca_focus_pos({0x81, 0x01, 0x04, 0x48, 0x01, 0x00, 0x00, 0x00, 0xFF});
+
+    serialPort.WriteBinary(visca_manual_focus);
+    usleep(100 * 1000);
+    serialPort.WriteBinary(visca_zoom_pos);
+    usleep(100 * 1000);
+    serialPort.WriteBinary(visca_focus_pos);
+    usleep(100 * 1000);
+
     try
     {
         asio::io_context io_context;
